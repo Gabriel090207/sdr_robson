@@ -1,10 +1,9 @@
-from fastapi import FastAPI
-from pydantic import BaseModel
+from fastapi import FastAPI, Request
 from dotenv import load_dotenv
 
 from services.whatsapp import process_message, send_ultramsg_message
 
-# Carrega variáveis de ambiente (.env)
+# Carrega variáveis de ambiente
 load_dotenv()
 
 app = FastAPI(title="SDR WhatsApp - Protótipo")
@@ -15,22 +14,43 @@ def root():
     return {"status": "SDR WhatsApp rodando com sucesso 🚀"}
 
 
-class WhatsAppMessage(BaseModel):
-    from_number: str
-    message: str
+@app.api_route("/whatsapp/webhook", methods=["GET", "POST"])
+async def whatsapp_webhook(request: Request):
+    payload = {}
 
+    # Tenta ler payload (POST ou GET)
+    try:
+        if request.method == "POST":
+            payload = await request.json()
+        else:
+            payload = dict(request.query_params)
+    except Exception as e:
+        print("❌ Erro ao ler payload:", e)
 
-@app.post("/whatsapp/webhook")
-def whatsapp_webhook(data: WhatsAppMessage):
-    # Processa a mensagem (SDR)
-    reply = process_message(data.from_number, data.message)
+    print("📩 Payload recebido:", payload)
 
-    # Envia resposta pelo WhatsApp real (UltraMsg)
-    send_ultramsg_message(data.from_number, reply)
+    # UltraMsg pode variar os campos
+    from_number = (
+        payload.get("from")
+        or payload.get("from_number")
+        or payload.get("phone")
+        or payload.get("chatId")
+    )
 
-    # Retorno apenas para debug / testes
-    return {
-        "to": data.from_number,
-        "message": reply,
-        "status": "mensagem enviada com sucesso"
-    }
+    message = (
+        payload.get("body")
+        or payload.get("message")
+        or payload.get("text")
+    )
+
+    if not from_number or not message:
+        print("⚠️ Payload inválido, ignorado")
+        return {"status": "ignored"}
+
+    # Processa mensagem (SDR)
+    reply = process_message(from_number, message)
+
+    # Envia resposta no WhatsApp
+    send_ultramsg_message(from_number, reply)
+
+    return {"status": "ok"}
