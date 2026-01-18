@@ -18,7 +18,6 @@ def root():
 async def whatsapp_webhook(request: Request):
     payload = {}
 
-    # Tenta ler payload (POST ou GET)
     try:
         if request.method == "POST":
             payload = await request.json()
@@ -29,23 +28,30 @@ async def whatsapp_webhook(request: Request):
 
     print("📩 Payload recebido:", payload)
 
-    # UltraMsg pode variar os campos
-    from_number = (
-        payload.get("from")
-        or payload.get("from_number")
-        or payload.get("phone")
-        or payload.get("chatId")
-    )
+    # Caso seja payload simples (teste via navegador)
+    if "from" in payload and "body" in payload:
+        from_number = payload.get("from")
+        message = payload.get("body")
+    else:
+        # Payload padrão UltraMsg
+        data = payload.get("data", {})
 
-    message = (
-        payload.get("body")
-        or payload.get("message")
-        or payload.get("text")
-    )
+        # Ignora mensagens enviadas pelo próprio bot
+        if data.get("fromMe") is True:
+            print("🔁 Mensagem do bot ignorada")
+            return {"status": "ignored"}
+
+        from_number = data.get("from")
+        message = data.get("body")
 
     if not from_number or not message:
         print("⚠️ Payload inválido, ignorado")
         return {"status": "ignored"}
+
+    # Limpa o número (remove @c.us)
+    from_number = from_number.replace("@c.us", "")
+
+    print(f"📨 Mensagem recebida de {from_number}: {message}")
 
     # Processa mensagem (SDR)
     reply = process_message(from_number, message)
