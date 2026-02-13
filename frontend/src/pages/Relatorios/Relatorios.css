@@ -1,0 +1,53 @@
+.export-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.report-filters {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.report-summary {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.report-table {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.table-header,
+.table-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  padding: 14px 16px;
+  align-items: center;
+}
+
+.table-header {
+  font-size: 13px;
+  font-weight: 500;
+  color: #6b7280;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.table-row {
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.table-row:last-child {
+  border-bottom: none;
+}

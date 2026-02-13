@@ -1,0 +1,87 @@
+/* ===== SIDEBAR BASE ===== */
+.sidebar {
+  width: 260px;
+  height: 100vh;
+  background: #ffffff;
+  border-right: 1px solid #e5e7eb;
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== LOGO ===== */
+.logo {
+  font-size: 20px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 32px;
+}
+
+/* ===== MENU ===== */
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* ===== ITEM ===== */
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 10px 14px;
+  min-height: 44px;
+
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #475569;
+  text-decoration: none;
+
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+/* ===== COLUNA FIXA DO ÍCONE ===== */
+.menu-icon {
+  width: 24px;
+  height: 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+}
+
+.menu-icon svg {
+  width: 18px;
+  height: 18px;
+  color: #64748b;
+}
+
+/* ===== TEXTO ===== */
+.menu-label {
+  line-height: 1;
+}
+
+/* ===== HOVER ===== */
+.menu-item:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+.menu-item:hover .menu-icon svg {
+  color: #0f172a;
+}
+
+/* ===== ATIVO ===== */
+.menu-item.active {
+  background: #e0f2fe;
+  color: #0284c7;
+}
+
+.menu-item.active .menu-icon svg {
+  color: #0284c7;
+}

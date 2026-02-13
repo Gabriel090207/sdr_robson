@@ -1,0 +1,90 @@
+.kpi-card-spark {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  overflow: hidden;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.kpi-card-spark:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06);
+  transform: translateY(-2px);
+}
+
+/* TOPO */
+.kpi-top {
+  padding: 16px 18px 8px;
+}
+
+.kpi-title {
+  font-size: 13px;
+  color: #64748b;
+}
+
+/* VALOR + PERCENTUAL */
+.kpi-value-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.kpi-value {
+  font-size: 28px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.kpi-percent {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* GRÁFICO */
+.kpi-sparkline {
+  height: 42px;
+  width: 100%;
+  margin-bottom: -2px;
+}
+
+.kpi-sparkline svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* VARIAÇÕES DE COR */
+.kpi-card-spark.positive .kpi-percent {
+  color: #16a34a;
+}
+
+.kpi-card-spark.positive polyline {
+  stroke: #16a34a;
+}
+
+.kpi-card-spark.positive polygon {
+  fill: rgba(22, 163, 74, 0.15);
+}
+
+.kpi-card-spark.neutral .kpi-percent {
+  color: #2563eb;
+}
+
+.kpi-card-spark.neutral polyline {
+  stroke: #2563eb;
+}
+
+.kpi-card-spark.neutral polygon {
+  fill: rgba(37, 99, 235, 0.15);
+}
+
+.kpi-card-spark.negative .kpi-percent {
+  color: #dc2626;
+}
+
+.kpi-card-spark.negative polyline {
+  stroke: #dc2626;
+}
+
+.kpi-card-spark.negative polygon {
+  fill: rgba(220, 38, 38, 0.15);
+}

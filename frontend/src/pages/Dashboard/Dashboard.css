@@ -1,0 +1,220 @@
+/* ===== DASHBOARD BASE ===== */
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* ===== HEADER ===== */
+.dashboard-header h1 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.dashboard-header p {
+  margin-top: 4px;
+  font-size: 14px;
+  color: #64748b;
+}
+
+/* ===== KPI GRID (TOPO) ===== */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+/* ===== GRID INFERIOR ===== */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  gap: 20px;
+  align-items: stretch;
+}
+
+/* ===== CARD BASE ===== */
+.card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 20px;
+}
+
+.card h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 0px;
+}
+
+/* ===== SUBTÍTULO DO CARD ===== */
+.card-subtitle {
+  font-size: 13px;
+  color: #64748b;
+  margin-bottom: 16px;
+}
+
+/* ========================================================= */
+/* ================== RESUMO RÁPIDO (FINAL) ================= */
+/* ========================================================= */
+
+.summary-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.summary-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.summary-label {
+  font-size: 14px;
+  color: #0f172a;
+}
+
+/* BADGE */
+.summary-badge {
+  min-width: 56px;
+  text-align: center;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* CORES */
+.summary-badge.primary {
+  background: #e0f2fe;
+  color: #0284c7;
+}
+
+.summary-badge.warning {
+  background: #fef9c3;
+  color: #a16207;
+}
+
+.summary-badge.danger {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+/* ========================================================= */
+/* ================== ALERTAS =============================== */
+/* ========================================================= */
+
+.alert-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.alert-list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  font-size: 14px;
+  color: #334155;
+}
+
+.alert-list strong {
+  font-size: 18px;
+  font-weight: 700;
+  color: #dc2626;
+}
+
+
+/* ===== FIX: RESUMO RÁPIDO NÃO VIRAR COLUNA TORTA ===== */
+.summary-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.summary-card h3,
+.summary-card .card-subtitle {
+  width: 100%;
+}
+
+.summary-row {
+  width: 100%;
+}
+
+
+/* ===== CORREÇÃO DEFINITIVA DO RESUMO RÁPIDO ===== */
+.summary-card {
+  align-items: stretch; /* força filhos ocuparem a largura */
+}
+
+.summary-list {
+  width: 100%;          /* UL ocupa o card inteiro */
+}
+
+.summary-row {
+  width: 100%;
+}
+
+.summary-label {
+  text-align: left;
+}
+
+
+/* ========================================================= */
+/* ================== ALERTAS EM BARRA ==================== */
+/* ========================================================= */
+
+.alert-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.alert-bar-row {
+   margin-top: 19px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.alert-label {
+ 
+  font-size: 14px;
+  color: #334155;
+}
+
+/* FUNDO DA BARRA */
+.alert-bar {
+  width: 100%;
+  height: 18px;
+  background: #e5e7eb;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+/* PARTE PREENCHIDA */
+.alert-bar-fill {
+  height: 100%;
+  background: #dc2626;
+  border-radius: 999px;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 8px;
+
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+}

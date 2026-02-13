@@ -1,0 +1,58 @@
+.donut-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+/* TEXTO */
+.donut-info {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.donut-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #334155;
+}
+
+.donut-row strong {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.donut-row .label {
+  color: #475569;
+}
+
+/* BOLINHA */
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+/* ROSQUINHA */
+.donut-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.donut {
+  width: 200px;
+  height: 200px;
+  transform: rotate(-90deg);
+}
+
+.donut path {
+  transition: opacity 0.2s ease;
+}
+
+.donut path:hover {
+  opacity: 0.85;
+}

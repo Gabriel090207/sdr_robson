@@ -1,0 +1,54 @@
+.sellers-summary {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.sellers-list {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.sellers-header,
+.seller-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  padding: 14px 16px;
+  align-items: center;
+}
+
+.sellers-header {
+  font-size: 13px;
+  font-weight: 500;
+  color: #6b7280;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.seller-row {
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.seller-row:last-child {
+  border-bottom: none;
+}
+
+.status {
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 999px;
+  width: fit-content;
+}
+
+.status.active {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.status.inactive {
+  background: #fee2e2;
+  color: #991b1b;
+}
